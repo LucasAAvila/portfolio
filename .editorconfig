@@ -1,0 +1,25 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Python — PEP8: 4 spaces
+[*.py]
+indent_size = 4
+
+# TypeScript / JavaScript — ecosystem default: 2 spaces
+[*.{ts,tsx,js,jsx,mjs,cjs,mts}]
+indent_size = 2
+
+# Markup / config — 2 spaces é o padrão mais comum
+[*.{json,yaml,yml,toml,css,html}]
+indent_size = 2
+
+# Markdown — trailing whitespace tem significado semântico (line break)
+[*.md]
+trim_trailing_whitespace = false
