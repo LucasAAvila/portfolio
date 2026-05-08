@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "cv": "CV",
+    "contact": "Contact",
+    "stack": "Stack"
+  },
+  "hero": {
+    "roleStrong": "Backend & Fullstack",
+    "roleThin": "Engineer",
+    "metaDescription": "I build backend systems with Python and FastAPI, and ship full-stack products with Next.js. Currently looking for remote opportunities.",
+    "cta": "View Projects",
+    "subtitle": "Python · FastAPI · PostgreSQL · Next.js",
+    "tagline": "Building reliable systems for distributed teams.",
+    "downloadCv": "Download CV",
+    "availableBadge": "available for remote work"
+  },
+  "stats": {
+    "years": "6+",
+    "yearsLabel": "years experience",
+    "contributions": "3",
+    "contributionsLabel": "open contributions",
+    "fastapi": "FastAPI",
+    "fastapiLabel": "preferred framework",
+    "docker": "Docker",
+    "dockerLabel": "containerized deploys",
+    "live": "Live",
+    "liveLabel": "deployed apps"
+  },
+  "about": {
+    "title": "About",
+    "bio": "<p>Backend engineer with <strong>6+ years</strong> building Python systems for enterprise operations, <strong>REST API integrations, process automation</strong>, and custom modules deployed across multiple client environments. <strong>5x certified in a large-scale Python/PostgreSQL platform serving enterprise clients</strong>, with hands-on experience in version migrations, webhook architectures, and production debugging.</p><p><strong>Now shipping full-stack applications with FastAPI, async SQLAlchemy, Next.js, and TypeScript</strong>. Deployed projects at lucasavila.dev. Including a finance tracker with JWT/MFA auth and CI/CD via GitHub Actions.</p><p>Open to remote backend or fullstack roles with US/EU teams. Async-first, UTC-3 timezone.</p>",
+    "whoIAm": "Who I am"
+  },
+  "projects": {
+    "title": "Projects",
+    "thumbPlaceholder": "screenshot / demo gif",
+    "liveBadge": "live ↗",
+    "viewLive": "View Live",
+    "architecture": "Architecture",
+    "backToHome": "Back home",
+    "notFound": "Project not found.",
+    "status": {
+      "active": "Live",
+      "in_progress": "In Progress",
+      "archived": "Archived"
+    },
+    "workThatShips": "Work that ships"
+  },
+  "skills": {
+    "title": "Technologies",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "infra": "Infra + DevOps",
+    "databases": "Databases"
+  },
+  "cv": {
+    "title": "CV",
+    "download": "Download PDF"
+  },
+  "contact": {
+    "title": "Contact",
+    "letsTalk": "Let's talk",
+    "openTo": "Open to remote opportunities — async-first, UTC-3.",
+    "emailLabel": "Email",
+    "linkedinLabel": "LinkedIn",
+    "githubLabel": "GitHub",
+    "form": {
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "messageLabel": "Message",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "success": "Thanks — I'll get back to you soon.",
+      "errors": {
+        "nameTooShort": "Name must be at least 2 characters.",
+        "nameTooLong": "Name must be at most 100 characters.",
+        "invalidEmail": "Please enter a valid email address.",
+        "messageTooShort": "Message must be at least 10 characters.",
+        "messageTooLong": "Message must be at most 2000 characters.",
+        "rateLimit": "Too many requests. Please try again in an hour.",
+        "network": "Network error. Please try again.",
+        "generic": "Something went wrong. Please try again or email me directly."
+      }
+    }
+  },
+  "footer": {
+    "brand": "lucas avila · lucasavila.dev",
+    "role": "backend & fullstack engineer"
+  },
+  "system": {
+    "loading": "Loading…",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The page you are looking for does not exist or has been moved.",
+    "notFoundCta": "Back home",
+    "errorTitle": "Something went wrong",
+    "errorBody": "An unexpected error occurred. Please try again.",
+    "errorRetry": "Try again"
+  }
+}

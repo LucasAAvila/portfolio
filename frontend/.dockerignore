@@ -1,0 +1,30 @@
+# Version control
+.git/
+.gitignore
+
+# Dependencies — reinstaladas no stage deps
+node_modules/
+.npm
+
+# Next.js build output — gerado no stage builder
+.next/
+out/
+
+# Environment files
+.env
+.env.*
+!.env.example
+.env.local
+.env.*.local
+
+# Testing / coverage
+coverage/
+.nyc_output/
+
+# Docs / local config
+*.md
+.editorconfig
+
+# Misc
+.DS_Store
+Thumbs.db
