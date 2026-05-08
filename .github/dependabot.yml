@@ -6,6 +6,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: "develop"
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore(frontend)"
@@ -24,6 +25,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: "develop"
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore(backend)"
@@ -37,6 +39,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: "develop"
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore(github-actions)"
@@ -49,6 +52,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: "develop"
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore(backend-docker)"
@@ -63,6 +67,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: "develop"
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore(frontend-docker)"
