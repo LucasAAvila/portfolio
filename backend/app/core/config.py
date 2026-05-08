@@ -20,7 +20,8 @@ def _parse_string_list(value: str | list[str]) -> list[str]:
     if not stripped:
         return []
     if stripped.startswith("["):
-        return json.loads(stripped)
+        parsed: list[str] = json.loads(stripped)
+        return parsed
     return [item.strip() for item in stripped.split(",") if item.strip()]
 
 

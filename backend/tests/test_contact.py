@@ -128,7 +128,7 @@ async def test_contact_success_calls_resend_with_correct_payload(
     sent = kwargs["json"]
     assert sent["from"] == settings.RESEND_FROM_EMAIL
     assert sent["to"] == settings.CONTACT_TO_EMAIL
-    assert sent["subject"] == f"Portfolio contact from {VALID_PAYLOAD['name']}"
+    assert sent["subject"] == "Portfolio contact form submission"
     assert VALID_PAYLOAD["name"] in sent["text"]
     assert VALID_PAYLOAD["email"] in sent["text"]
     assert VALID_PAYLOAD["message"] in sent["text"]

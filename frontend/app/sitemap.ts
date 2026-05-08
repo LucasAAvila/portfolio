@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { routing } from "@/i18n/routing";
-import { getAllProjects } from "@/lib/api";
+import { getAllProjects, type Project } from "@/lib/api";
 import { BASE_URL } from "@/lib/constants";
 
 function localeAlternates(path: string) {
@@ -15,7 +15,13 @@ function localeAlternates(path: string) {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const projects = await getAllProjects();
+  let projects: Project[] = [];
+  try {
+    projects = await getAllProjects();
+  } catch {
+    // API unreachable at build time (e.g. CI). Fall back to static entries;
+    // ISR will refresh the sitemap once the API is back via the "projects" tag.
+  }
 
   const homeEntries: MetadataRoute.Sitemap = routing.locales.map((locale) => ({
     url: `${BASE_URL}/${locale}`,
