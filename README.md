@@ -4,11 +4,11 @@ Personal portfolio site built with Next.js and FastAPI, available at **[lucasavi
 
 → **Live:** [lucasavila.dev](https://www.lucasavila.dev) · **CV:** [English](frontend/public/CV_Lucas_Avila_Backend_en.pdf) · [Português](frontend/public/CV_Lucas_Avila_Backend_pt-BR.pdf)
 
-![License](https://img.shields.io/github/license/LucasAAvila/portfolio)
-![Python](https://img.shields.io/badge/python-3.12-blue?logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.135+-009688?logo=fastapi&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)
+[![ci-backend](https://github.com/LucasAAvila/portfolio/actions/workflows/ci-backend.yml/badge.svg)](https://github.com/LucasAAvila/portfolio/actions/workflows/ci-backend.yml)
+[![ci-frontend](https://github.com/LucasAAvila/portfolio/actions/workflows/ci-frontend.yml/badge.svg)](https://github.com/LucasAAvila/portfolio/actions/workflows/ci-frontend.yml)
+[![codeql](https://github.com/LucasAAvila/portfolio/actions/workflows/codeql.yml/badge.svg)](https://github.com/LucasAAvila/portfolio/actions/workflows/codeql.yml)
+[![pre-commit](https://github.com/LucasAAvila/portfolio/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/LucasAAvila/portfolio/actions/workflows/pre-commit.yml)
+[![License: MIT](https://img.shields.io/github/license/LucasAAvila/portfolio)](LICENSE)
 
 ---
 
@@ -141,6 +141,28 @@ Copy `.env.example` to `.env` and fill in the values:
 | `REVALIDATION_SECRET` | Shared secret for `POST /api/revalidate` (sent as `x-revalidate-secret` header) |
 
 ---
+
+## CI/CD
+
+Every PR runs five GitHub Actions workflows in parallel — see [`.github/workflows/`](.github/workflows/):
+
+| Workflow | What it gates |
+|---|---|
+| [`ci-backend`](.github/workflows/ci-backend.yml) | ruff (lint + format), mypy, pytest with a Postgres 16 service container, coverage artifact |
+| [`ci-frontend`](.github/workflows/ci-frontend.yml) | eslint, prettier, `tsc --noEmit`, vitest, `next build` |
+| [`pre-commit`](.github/workflows/pre-commit.yml) | runs the same hooks as locally so config can't drift |
+| [`dependency-review`](.github/workflows/dependency-review.yml) | blocks new GPL/AGPL deps and high-severity CVEs |
+| [`codeql`](.github/workflows/codeql.yml) | static security analysis for Python + JS/TS, weekly + on PR |
+
+Path filters scope frontend PRs to frontend jobs and vice versa. Concurrency groups cancel superseded runs on the same PR. Dependabot covers npm, uv, github-actions, and Docker base images. Local development mirrors CI via `make verify` — see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Deployment & operations
+
+- **Frontend** ships to **Vercel** via its native git integration: every PR gets a preview URL, `main` auto-deploys to production. The frontend Dockerfile (`output: standalone`) exists for portability and parity testing, not as the production runtime.
+- **Backend** ships to **Railway** from `main`, also via git integration. Migrations run at container start (`backend/start.sh`); the multi-stage Dockerfile runs as a non-root user with a `/health` healthcheck.
+- **Database**: Railway-managed Postgres 16. Schema changes go through Alembic.
+- **No staging environment.** With one author and a low-stakes site, a permanently-empty staging URL would be theatre. Vercel preview deploys cover the only PR-time signal that actually matters; the `ci-backend` Postgres-service test job covers the rest.
+- **Secrets** live in Railway and Vercel project settings — never in GitHub Actions. CI does not deploy.
 
 ## License
 

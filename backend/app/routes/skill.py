@@ -17,7 +17,7 @@ async def list_skills(response: Response, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(Skill).where(Skill.visible).order_by(Skill.order))
     skills = result.scalars().all()
 
-    grouped = {}
+    grouped: dict[str, list[SkillRead]] = {}
     for skill in skills:
         grouped.setdefault(skill.category, []).append(SkillRead.model_validate(skill))
     return grouped

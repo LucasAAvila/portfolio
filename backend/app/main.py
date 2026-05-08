@@ -62,7 +62,11 @@ def rate_limit_handler(request: Request, exc: RateLimitExceeded):
 
 
 app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, rate_limit_handler)
+# Starlette types the handler as Callable[[Request, Exception], ...]; slowapi
+# narrows the second arg to RateLimitExceeded, which is the more useful type
+# at the callsite. The narrowing is safe because the handler is only invoked
+# for the registered exception class.
+app.add_exception_handler(RateLimitExceeded, rate_limit_handler)  # type: ignore[arg-type]
 
 app.include_router(health.router)
 app.include_router(project.router)
