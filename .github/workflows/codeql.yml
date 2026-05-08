@@ -1,3 +1,9 @@
+# Advanced CodeQL config. If GitHub's "default setup" is enabled for this repo
+# the upload step rejects our SARIF with:
+#   "CodeQL analyses from advanced configurations cannot be processed when
+#    the default setup is enabled".
+# Fix: Settings → Code security → Code scanning → CodeQL analysis → switch
+# from "Default" to "Advanced" (this workflow). Only one mode can be active.
 name: codeql
 
 on:

@@ -69,7 +69,8 @@ jobs:
           --health-retries 10
     env:
       DATABASE_URL: postgresql+asyncpg://portfolio:portfolio@localhost:5432/portfolio
-      RESEND_API_KEY: test-key-not-used
+      RESEND_API_KEY: re_test_key_not_used
+      RESEND_API_URL: https://api.resend.com/emails
       RESEND_FROM_EMAIL: noreply@example.com
       CONTACT_TO_EMAIL: contact@example.com
       CORS_ORIGINS: http://localhost:3000
