@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+/* Provided by the `shadcn` devDependency — resolved by PostCSS at build time. */
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Semantic tokens (reference palette) */
+  --color-bg: var(--bg);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+
+  --color-border-1: var(--border-1);
+  --color-border-2: var(--border-2);
+  --color-border-3: var(--border-3);
+  --color-border-4: var(--border-4);
+
+  --color-text: var(--text);
+  --color-text-soft: var(--text-soft);
+  --color-text-mute: var(--text-mute);
+  --color-text-dim: var(--text-dim);
+  --color-text-dimmer: var(--text-dimmer);
+  --color-text-faint: var(--text-faint);
+  --color-text-ghost: var(--text-ghost);
+
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-border: var(--accent-border);
+  --color-accent-border-soft: var(--accent-border-soft);
+  --color-accent-bg: var(--accent-bg);
+
+  /* shadcn compatibility (button variants still reference these) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-sans-stack);
+  --font-mono: var(--font-mono-stack);
+  --font-heading: var(--font-sans-stack);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+:root {
+  /* Reference palette */
+  --bg: #0d0d0d;
+  --surface-1: #111111;
+  --surface-2: #161616;
+
+  --border-1: #1a1a1a;
+  --border-2: #1e1e1e;
+  --border-3: #222222;
+  --border-4: #2a2a2a;
+
+  --text: #e8e6e1;
+  --text-soft: #b8b8b8;
+  --text-mute: #ababab;
+  --text-dim: #a0a0a0;
+  --text-dimmer: #969696;
+  --text-faint: #8e8e8e;
+  --text-ghost: #8e8e8e;
+
+  --accent: #f59e0b;
+  --accent-soft: rgba(245, 158, 11, 0.6);
+  --accent-border: rgba(245, 158, 11, 0.27);
+  --accent-border-soft: rgba(245, 158, 11, 0.2);
+  --accent-bg: rgba(245, 158, 11, 0.133);
+
+  /* Typography */
+  --font-sans-stack:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono-stack:
+    var(--font-geist-mono), "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+
+  --radius: 0.5rem;
+
+  /* shadcn aliases — site is always dark, so root = dark values */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface-1);
+  --card-foreground: var(--text);
+  --popover: var(--surface-1);
+  --popover-foreground: var(--text);
+  --primary: var(--accent);
+  --primary-foreground: var(--bg);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--text);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--text-dim);
+  --accent-foreground: var(--bg);
+  --destructive: #dc2626;
+  --border: var(--border-1);
+  --input: var(--border-1);
+  --ring: var(--accent);
+}
+
+@layer base {
+  html {
+    font-size: 13px;
+    font-family: var(--font-sans-stack);
+  }
+  body {
+    @apply bg-bg text-text;
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
+}
+
+@layer components {
+  .project-thumb {
+    background: linear-gradient(135deg, #0f1a2e 0%, #1a2540 50%, #0d1520 100%);
+  }
+
+  .project-thumb-1 {
+    background: linear-gradient(135deg, #11182b 0%, #1f2b4a 50%, #0c1422 100%);
+  }
+
+  .project-thumb-2 {
+    background: linear-gradient(135deg, #0d1f2e 0%, #1a3040 50%, #0a1820 100%);
+  }
+
+  .project-thumb-3 {
+    background: linear-gradient(135deg, #141a2e 0%, #222e4c 50%, #0d1220 100%);
+  }
+}

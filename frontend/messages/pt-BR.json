@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "cv": "CV",
+    "contact": "Contato",
+    "stack": "Stack"
+  },
+  "hero": {
+    "roleStrong": "Backend & Fullstack",
+    "roleThin": "Engenheiro",
+    "metaDescription": "Construo sistemas backend com Python e FastAPI, e entrego produtos fullstack com Next.js. Buscando oportunidades remotas.",
+    "cta": "Ver Projetos",
+    "subtitle": "Python · FastAPI · PostgreSQL · Next.js",
+    "tagline": "Construindo sistemas confiáveis para times distribuídos.",
+    "downloadCv": "Baixar CV",
+    "availableBadge": "disponível para trabalho remoto"
+  },
+  "stats": {
+    "years": "6+",
+    "yearsLabel": "anos de experiência",
+    "contributions": "3",
+    "contributionsLabel": "contribuições abertas",
+    "fastapi": "FastAPI",
+    "fastapiLabel": "framework preferido",
+    "docker": "Docker",
+    "dockerLabel": "deploys containerizados",
+    "live": "Live",
+    "liveLabel": "apps em produção"
+  },
+  "about": {
+    "title": "Sobre",
+    "bio": "<p>Engenheiro backend com <strong>6+ anos</strong> construindo sistemas Python para operações enterprise, <strong>integrações REST API, automação de processos</strong> e módulos customizados entregues em múltiplos ambientes de produção. <strong>5x certificado em plataforma Python/PostgreSQL de grande escala que atende clientes enterprise</strong>, com experiência prática em migrações de versões, arquiteturas de webhook e debugging em produção.</p><p><strong>Atualmente entregando aplicações fullstack com FastAPI, SQLAlchemy async, Next.js e TypeScript</strong>. Projetos deployados em lucasavila.dev, incluindo um finance tracker com autenticação JWT/MFA e CI/CD via GitHub Actions.</p><p>Aberto a vagas remotas de backend ou fullstack com times nos EUA ou Europa. Async-first, fuso UTC-3.</p>",
+    "whoIAm": "Quem sou"
+  },
+  "projects": {
+    "title": "Projetos",
+    "thumbPlaceholder": "captura de tela / demo gif",
+    "liveBadge": "ver ao vivo ↗",
+    "viewLive": "Ver ao vivo",
+    "architecture": "Arquitetura",
+    "backToHome": "Voltar ao início",
+    "notFound": "Projeto não encontrado.",
+    "status": {
+      "active": "No ar",
+      "in_progress": "Em andamento",
+      "archived": "Arquivado"
+    },
+    "workThatShips": "Projetos em produção"
+  },
+  "skills": {
+    "title": "Tecnologias",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "infra": "Infra + DevOps",
+    "databases": "Banco de Dados"
+  },
+  "cv": {
+    "title": "CV",
+    "download": "Baixar PDF"
+  },
+  "contact": {
+    "title": "Contato",
+    "letsTalk": "Vamos conversar",
+    "openTo": "Aberto a oportunidades remotas — async-first, UTC-3.",
+    "emailLabel": "E-mail",
+    "linkedinLabel": "LinkedIn",
+    "githubLabel": "GitHub",
+    "form": {
+      "nameLabel": "Nome",
+      "emailLabel": "E-mail",
+      "messageLabel": "Mensagem",
+      "submit": "Enviar mensagem",
+      "submitting": "Enviando…",
+      "success": "Obrigado — retorno em breve.",
+      "errors": {
+        "nameTooShort": "O nome deve ter pelo menos 2 caracteres.",
+        "nameTooLong": "O nome deve ter no máximo 100 caracteres.",
+        "invalidEmail": "Informe um e-mail válido.",
+        "messageTooShort": "A mensagem deve ter pelo menos 10 caracteres.",
+        "messageTooLong": "A mensagem deve ter no máximo 2000 caracteres.",
+        "rateLimit": "Muitas requisições. Tente novamente em uma hora.",
+        "network": "Erro de rede. Tente novamente.",
+        "generic": "Algo deu errado. Tente novamente ou me envie um e-mail diretamente."
+      }
+    }
+  },
+  "footer": {
+    "brand": "lucas avila · lucasavila.dev",
+    "role": "engenheiro backend & fullstack"
+  },
+  "system": {
+    "loading": "Carregando…",
+    "notFoundTitle": "Página não encontrada",
+    "notFoundBody": "A página que você procura não existe ou foi movida.",
+    "notFoundCta": "Voltar ao início",
+    "errorTitle": "Algo deu errado",
+    "errorBody": "Ocorreu um erro inesperado. Tente novamente.",
+    "errorRetry": "Tentar novamente"
+  }
+}
