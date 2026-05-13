@@ -22,6 +22,7 @@ export async function ProjectsSection({ locale }: Props) {
             title={locale === "pt-BR" ? p.title_pt : p.title_en}
             description={locale === "pt-BR" ? p.short_description_pt : p.short_description_en}
             techStack={p.tech_stack}
+            imageUrl={p.image_url}
             liveUrl={p.live_url}
             repoUrl={p.repo_url}
             status={p.status}
