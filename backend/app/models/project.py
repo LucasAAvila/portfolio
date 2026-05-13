@@ -21,6 +21,7 @@ class Project(Base):
     long_description_en: Mapped[str | None] = mapped_column(Text)
     long_description_pt: Mapped[str | None] = mapped_column(Text)
     tech_stack: Mapped[list[str]] = mapped_column(JSONB, default=list)
+    image_url: Mapped[str | None] = mapped_column(String)
     live_url: Mapped[str | None] = mapped_column(String)
     repo_url: Mapped[str | None] = mapped_column(String)
     status: Mapped[ProjectStatus] = mapped_column(

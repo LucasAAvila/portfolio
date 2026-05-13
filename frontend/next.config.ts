@@ -5,6 +5,11 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
 
+// Cloudflare R2 public hostname for next/image remote patterns.
+// Must be set in both local .env and Vercel env vars.
+const R2_PUBLIC_URL = process.env.NEXT_PUBLIC_R2_PUBLIC_URL ?? "";
+const r2Hostname = R2_PUBLIC_URL ? new URL(R2_PUBLIC_URL).hostname : "";
+
 // Vercel Speed Insights sends vitals to this host.
 const VERCEL_VITALS = "https://vitals.vercel-insights.com";
 // Vercel Speed Insights script origin.
@@ -54,6 +59,11 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  images: {
+    remotePatterns: r2Hostname
+      ? [{ protocol: "https", hostname: r2Hostname, pathname: "/projects/**" }]
+      : [],
+  },
   async headers() {
     return [
       {

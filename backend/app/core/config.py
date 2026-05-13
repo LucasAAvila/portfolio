@@ -44,6 +44,18 @@ class Settings(BaseSettings):
     CONTACT_TO_EMAIL: Annotated[list[str], NoDecode]
     CORS_ORIGINS: Annotated[list[str], NoDecode]
 
+    # Cloudflare R2 — S3-compatible object storage for project images.
+    R2_ACCOUNT_ID: str = Field(min_length=1)
+    R2_ACCESS_KEY_ID: str = Field(min_length=1)
+    R2_SECRET_ACCESS_KEY: str = Field(min_length=1)
+    R2_BUCKET_NAME: str = Field(min_length=1)
+    # Public base URL for the R2 bucket (custom domain or r2.dev subdomain).
+    R2_PUBLIC_URL: str = Field(min_length=1)
+
+    # Shared secret for write-access admin endpoints (image upload/delete).
+    # Generate with: openssl rand -hex 32
+    ADMIN_SECRET: str = Field(min_length=1)
+
     @field_validator("CONTACT_TO_EMAIL", "CORS_ORIGINS", mode="before")
     @classmethod
     def parse_list(cls, value: str | list[str]) -> list[str]:
