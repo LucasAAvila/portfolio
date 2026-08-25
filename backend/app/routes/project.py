@@ -1,8 +1,11 @@
+import hmac
+
 from fastapi import (
     APIRouter,
     Depends,
     Header,
     HTTPException,
+    Request,
     Response,
     UploadFile,
     status,
@@ -12,6 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
 from app.core.database import get_db
+from app.core.limiter import limiter
 from app.models.project import Project
 from app.schemas.project import ProjectRead
 from app.services.storage import delete_project_image, upload_project_image
@@ -20,7 +24,9 @@ router = APIRouter(prefix="/projects", tags=["projects"])
 
 
 def _require_admin(x_admin_secret: str | None = Header(default=None)) -> None:
-    if not x_admin_secret or x_admin_secret != settings.ADMIN_SECRET:
+    if not x_admin_secret or not hmac.compare_digest(
+        x_admin_secret, settings.ADMIN_SECRET
+    ):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized"
         )
@@ -62,7 +68,9 @@ async def get_project(slug: str, db: AsyncSession = Depends(get_db)):
     response_model=ProjectRead,
     dependencies=[Depends(_require_admin)],
 )
+@limiter.limit("20/hour")
 async def upload_image(
+    request: Request,
     slug: str,
     file: UploadFile,
     db: AsyncSession = Depends(get_db),
@@ -85,7 +93,9 @@ async def upload_image(
     status_code=status.HTTP_204_NO_CONTENT,
     dependencies=[Depends(_require_admin)],
 )
+@limiter.limit("20/hour")
 async def delete_image(
+    request: Request,
     slug: str,
     db: AsyncSession = Depends(get_db),
 ):
