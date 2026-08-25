@@ -58,7 +58,7 @@ async def upload_project_image(slug: str, file: UploadFile) -> str:
     data = await file.read()
     if len(data) > _MAX_SIZE_BYTES:
         raise HTTPException(
-            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+            status_code=status.HTTP_413_CONTENT_TOO_LARGE,
             detail="Image exceeds the 5 MB limit.",
         )
 
