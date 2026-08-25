@@ -58,7 +58,13 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // Standalone output is for the Dockerfile (portability/parity testing),
+  // not for Vercel: Vercel's own builder does its own bundling, and as of
+  // Next.js 16.3 combining the two makes the build fail post-compile with
+  // "ENOENT ... .next/next-server.js.nft.json" because standalone mode
+  // changes where that trace file is emitted. Vercel sets VERCEL=1 in every
+  // one of its build environments, so skip standalone there.
+  ...(process.env.VERCEL ? {} : { output: "standalone" as const }),
   images: {
     remotePatterns: r2Hostname
       ? [{ protocol: "https", hostname: r2Hostname, pathname: "/projects/**" }]
