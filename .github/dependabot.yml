@@ -15,6 +15,12 @@ updates:
         dependency-type: "development"
       production-dependencies:
         dependency-type: "production"
+    ignore:
+      # typescript-eslint (pulled in via eslint-config-next) doesn't support
+      # TS 7 yet: https://github.com/typescript-eslint/typescript-eslint/issues/10940
+      # Remove this once that lands, then let dev-dependencies pick it up again.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     labels:
       - "dependencies"
       - "frontend"
