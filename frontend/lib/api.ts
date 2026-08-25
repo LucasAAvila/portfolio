@@ -16,6 +16,7 @@ export const ProjectSchema = z.object({
   long_description_en: z.string().nullable(),
   long_description_pt: z.string().nullable(),
   tech_stack: z.array(z.string()),
+  image_url: z.string().nullable(),
   live_url: z.string().nullable(),
   repo_url: z.string().nullable(),
   status: ProjectStatus,

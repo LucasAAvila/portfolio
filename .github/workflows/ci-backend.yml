@@ -74,6 +74,12 @@ jobs:
       RESEND_FROM_EMAIL: noreply@example.com
       CONTACT_TO_EMAIL: contact@example.com
       CORS_ORIGINS: http://localhost:3000
+      R2_ACCOUNT_ID: test_account_id
+      R2_ACCESS_KEY_ID: test_access_key_id
+      R2_SECRET_ACCESS_KEY: test_secret_access_key
+      R2_BUCKET_NAME: test-bucket
+      R2_PUBLIC_URL: https://pub-test.r2.dev
+      ADMIN_SECRET: test_admin_secret_not_used_in_prod
     steps:
       - uses: actions/checkout@v7
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { Pill } from "./ui/pill";
@@ -11,6 +12,7 @@ interface ProjectCardProps {
   techStack: string[];
   liveUrl: string | null;
   repoUrl: string | null;
+  imageUrl: string | null;
   status: ProjectStatus;
   slug: string;
 }
@@ -21,6 +23,7 @@ export async function ProjectCard({
   techStack,
   liveUrl,
   repoUrl,
+  imageUrl,
   status,
   slug,
 }: ProjectCardProps) {
@@ -32,14 +35,24 @@ export async function ProjectCard({
       <div
         className={cn(
           "project-thumb h-[160px] relative flex items-center justify-center",
-          thumbClass
+          !imageUrl && thumbClass
         )}
       >
-        <span className="font-mono text-[10px] tracking-[0.1em] text-text-ghost">
-          {t("thumbPlaceholder")}
-        </span>
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        ) : (
+          <span className="font-mono text-[10px] tracking-[0.1em] text-text-ghost">
+            {t("thumbPlaceholder")}
+          </span>
+        )}
         {status === "active" && (
-          <span className="absolute top-3 right-3 bg-accent-bg border border-accent-border text-accent text-[10px] px-[10px] py-[2px] rounded-[3px] font-mono tracking-[0.06em]">
+          <span className="absolute top-3 right-3 bg-accent-bg border border-accent-border text-accent text-[10px] px-[10px] py-[2px] rounded-[3px] font-mono tracking-[0.06em] z-10">
             {t("liveBadge")}
           </span>
         )}
