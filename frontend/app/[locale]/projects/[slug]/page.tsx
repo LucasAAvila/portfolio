@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
@@ -210,15 +211,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           <div
             className={cn(
-              "project-thumb h-[220px] relative flex items-center justify-center rounded-[6px] border border-border-2 mb-7",
-              thumbClass
+              "project-thumb h-[220px] relative flex items-center justify-center rounded-[6px] border border-border-2 mb-7 overflow-hidden",
+              !project.image_url && thumbClass
             )}
           >
-            <span className="font-mono text-[10px] tracking-[0.1em] text-text-ghost">
-              {t("thumbPlaceholder")}
-            </span>
+            {project.image_url ? (
+              <Image
+                src={project.image_url}
+                alt={title}
+                fill
+                sizes="(max-width: 780px) 100vw, 780px"
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <span className="font-mono text-[10px] tracking-[0.1em] text-text-ghost">
+                {t("thumbPlaceholder")}
+              </span>
+            )}
             {project.status === "active" && (
-              <span className="absolute top-3 right-3 bg-accent-bg border border-accent-border text-accent text-[10px] px-[10px] py-[2px] rounded-[3px] font-mono tracking-[0.06em]">
+              <span className="absolute top-3 right-3 bg-accent-bg border border-accent-border text-accent text-[10px] px-[10px] py-[2px] rounded-[3px] font-mono tracking-[0.06em] z-10">
                 {t("liveBadge")}
               </span>
             )}

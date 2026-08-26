@@ -15,6 +15,7 @@ class ProjectRead(BaseModel):
     long_description_en: str | None
     long_description_pt: str | None
     tech_stack: list[str]
+    image_url: str | None
     live_url: str | None
     repo_url: str | None
     status: ProjectStatus

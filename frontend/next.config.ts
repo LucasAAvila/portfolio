@@ -5,6 +5,11 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
 
+// Cloudflare R2 public hostname for next/image remote patterns.
+// Must be set in both local .env and Vercel env vars.
+const R2_PUBLIC_URL = process.env.NEXT_PUBLIC_R2_PUBLIC_URL ?? "";
+const r2Hostname = R2_PUBLIC_URL ? new URL(R2_PUBLIC_URL).hostname : "";
+
 // Vercel Speed Insights sends vitals to this host.
 const VERCEL_VITALS = "https://vitals.vercel-insights.com";
 // Vercel Speed Insights script origin.
@@ -53,7 +58,18 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // Standalone output is for the Dockerfile (portability/parity testing),
+  // not for Vercel: Vercel's own builder does its own bundling, and as of
+  // Next.js 16.3 combining the two makes the build fail post-compile with
+  // "ENOENT ... .next/next-server.js.nft.json" because standalone mode
+  // changes where that trace file is emitted. Vercel sets VERCEL=1 in every
+  // one of its build environments, so skip standalone there.
+  ...(process.env.VERCEL ? {} : { output: "standalone" as const }),
+  images: {
+    remotePatterns: r2Hostname
+      ? [{ protocol: "https", hostname: r2Hostname, pathname: "/projects/**" }]
+      : [],
+  },
   async headers() {
     return [
       {
