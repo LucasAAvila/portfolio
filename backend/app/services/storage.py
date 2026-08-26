@@ -86,5 +86,8 @@ async def delete_project_image(public_url: str) -> None:
     async with _r2_client() as client:
         try:
             await client.delete_object(Bucket=settings.R2_BUCKET_NAME, Key=key)
-        except ClientError:
-            pass
+        except ClientError as exc:
+            error_code = exc.response.get("Error", {}).get("Code")
+            if error_code in {"NoSuchKey", "404", "NotFound"}:
+                return
+            raise
